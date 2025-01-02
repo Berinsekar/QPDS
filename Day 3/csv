@@ -1,0 +1,26 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Read data from the CSV file
+filename = 'fdata.csv'
+data = pd.read_csv(filename)
+
+# Convert 'Date' column to datetime
+data['Date'] = pd.to_datetime(data['Date'])
+
+# Plotting the line charts
+plt.figure(figsize=(12, 8))
+
+plt.plot(data['Date'], data['Open'], label='Open', marker='o')
+plt.plot(data['Date'], data['High'], label='High', marker='o')
+plt.plot(data['Date'], data['Low'], label='Low', marker='o')
+plt.plot(data['Date'], data['Close'], label='Close', marker='o')
+
+# Adding labels and title
+plt.xlabel('Date')
+plt.ylabel('Price')
+plt.title('Alphabet Inc. Financial Data (Oct 3, 2016 - Oct 7, 2016)')
+plt.legend()
+
+# Display the plot
+plt.show()
