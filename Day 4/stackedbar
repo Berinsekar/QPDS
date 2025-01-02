@@ -1,0 +1,35 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Sample data
+means_men = [22, 30, 35, 35, 26]
+means_women = [25, 32, 30, 35, 29]
+men_std = [4, 3, 4, 1, 5]
+women_std = [3, 5, 2, 3, 3]
+groups = ['G1', 'G2', 'G3', 'G4', 'G5']
+
+# X-axis positions
+x = np.arange(len(groups))
+width = 0.35  # Width of the bars
+
+# Create bar plot
+fig, ax = plt.subplots()
+
+# Men bars
+bars_men = ax.bar(x, means_men, width, label='Men', color='blue', yerr=men_std, capsize=5)
+
+# Women bars stacked on top of men bars
+bars_women = ax.bar(x, means_women, width, label='Women', color='orange', bottom=means_men, yerr=women_std, capsize=5)
+
+# Add title and labels
+ax.set_title('Scores by Group and Gender with Error Bars')
+ax.set_xlabel('Group')
+ax.set_ylabel('Scores')
+ax.set_xticks(x)
+ax.set_xticklabels(groups)
+
+# Add legend
+ax.legend()
+
+# Display the plot
+plt.show()
