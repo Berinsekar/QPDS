@@ -1,0 +1,16 @@
+import pandas as pd
+import yfinance as yf
+import matplotlib.pyplot as plt
+
+
+start_date = '2023-01-01'
+end_date = '2024-12-31'
+
+
+googl_data = yf.download('GOOGL', start=start_date, end=end_date)
+
+
+plt.figure(figsize=(10, 5))
+googl_data['Volume'].plot(kind='bar', title='Trading Volume of Alphabet Inc. (GOOGL)', 
+                          xlabel='Date', ylabel='Volume')
+plt.show()
